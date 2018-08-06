@@ -1,0 +1,9 @@
+1.print "hello world"
+(give “no” for compile with input).
+
+
+2. a=int(raw_input("Enter a value "))
+b=int(raw_input("Enter b value "))
+c=a+b
+print c
+(“yes” for compile with input)
