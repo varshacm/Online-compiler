@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -16,27 +15,27 @@ res.sendfile( __dirname + "/index.html");
 
 app.post('/compilecode' , function (req , res ) 
 {
-	var code = req.body.code;	
-	var input = req.body.input;
-  var inputRadio = req.body.inputRadio;
+	var c = req.body.code;	
+	var i = req.body.input;
+  var Radio = req.body.inputRadio;
   var lang = req.body.lang;
     
     if(lang === "Java")
     {
-        if(inputRadio === "true")
+        if(Radio === "true")
         {
             var envData = { OS :"linux" };     
-            console.log(code);
+            console.log(c);
             
-compiler.compileJavaWithInput( envData , code , input ,  function(data){
+compiler.compileJavaWithInput( envData , c , i ,  function(data){
                 res.send(data);
             });
         }
         else
         {
             var envData = { OS : "linux" };     
-            console.log(code);
-            compiler.compileJava( envData , code , function(data){
+            console.log(c);
+            compiler.compileJava( envData , c, function(data){
                 res.send(data);
             });
 
@@ -45,17 +44,17 @@ compiler.compileJavaWithInput( envData , code , input ,  function(data){
     }
     if( lang === "Python")
     {
-        if(inputRadio === "true")
+        if(Radio === "true")
         {
             var envData = { OS : "linux"};
-            compiler.compilePythonWithInput(envData , code , input , function(data){
+            compiler.compilePythonWithInput(envData , c , i , function(data){
                 res.send(data);
             });            
         }
         else
         {
             var envData = { OS : "linux"};
-            compiler.compilePython(envData , code , function(data){
+            compiler.compilePython(envData , c , function(data){
                 res.send(data);
             });
         }
